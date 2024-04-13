@@ -1,9 +1,16 @@
+
+
+html, body{
+  height:100%
+  margin 0;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-*{
-  margin: auto 0%;
-  padding: 0;
+.login_left_image{
+  background-image: url("./assets/LoginLeftImage.webp");
+  background-position: 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
