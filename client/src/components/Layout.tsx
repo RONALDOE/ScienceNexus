@@ -1,20 +1,21 @@
-import React from 'react'
-import Topbar from './Topbar';
+import React from 'react';
+import Topbar from './Navbar';
+
 interface LayoutProps {
     children: React.ReactNode;
 }
 
-export default function Layout({children}: LayoutProps) {
-  return (
-    <div className='w-screen h-screen'>
-        <Topbar/>
-        <div className='w-full h-full flex flex-row'>
-            <div className='w-[20%] bg-black'></div>
-            <div className='w-[50%]'>{children}</div>
-            <div className='w-[30%] bg-black'></div>
-
+export default function Layout({ children }: LayoutProps) {
+    return (
+        <div className='flex flex-col w-screen h-screen'>
+            <Topbar />
+            <div className='flex-1 bg-gray-200'>
+                <div className='flex justify-center h-full'>
+                    <div className='w-3/12 bg-black'></div> {/* Columna izquierda */}
+                    <div className='w-6/12'>{children}</div> {/* Contenido principal */}
+                    <div className='w-3/12 bg-black'></div> {/* Columna derecha */}
+                </div>
+            </div>
         </div>
-
-    </div>
-  )
+    );
 }
