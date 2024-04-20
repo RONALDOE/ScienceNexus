@@ -1,0 +1,165 @@
+import { IPost } from "@utils/interfaces";
+
+export const mockPosts: IPost[] = [
+  {
+    _id: "1",
+    title: "Post 1",
+    content: "Contenido del Post 1...",
+    image: "https://ejemplo.com/imagen1.jpg",
+    user: {
+      _id: "user1",
+      username: "usuario1",
+      image: "https://ejemplo.com/usuario1.jpg",
+      badge: "El ALLLFAA",
+      email: "El ALLLFAA",
+    },
+    likes: 10,
+    createdAt: "2024-04-17T12:00:00Z",
+    updatedAt: "2024-04-17T12:30:00Z",
+  },
+  {
+    _id: "2",
+    title: "Post 2",
+    content:
+      `lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et 
+      dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip 
+      ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore fugiat
+       nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim 
+       id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut 
+       labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip 
+       ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore fugiat nulla 
+       pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum`,
+    user: {
+      _id: "user2",
+      username: "usuario2",
+      image: "https://ejemplo.com/usuario2.jpg",
+      badge: "El MAYOOOORRR",
+      email: "El MAYOOOORRR",
+    },
+    likes: 5,
+    createdAt: "2024-04-16T09:00:00Z",
+    updatedAt: "2024-04-16T09:30:00Z",
+  },
+  {
+    _id: "3",
+    title: "Post 3",
+    content: "Contenido del Post 3...",
+    image: "https://ejemplo.com/imagen3.jpg",
+    user: {
+      _id: "user3",
+      username: "usuario3",
+      image: "https://ejemplo.com/usuario3.jpg",
+      badge: "El GENIAAAAAL",
+      email: "El GENIAAAAAL",
+    },
+    likes: 15,
+    createdAt: "2024-04-15T14:00:00Z",
+    updatedAt: "2024-04-15T14:30:00Z",
+  },
+  {
+    _id: "4",
+    title: "Post 4",
+    content: "Contenido del Post 4...",
+    image: "https://ejemplo.com/imagen4.jpg",
+    user: {
+      _id: "user4",
+      username: "usuario4",
+      image: "https://ejemplo.com/usuario4.jpg",
+      badge: "El PRODIGIO",
+      email: "El PRODIGIO",
+    },
+    likes: 20,
+    createdAt: "2024-04-14T10:00:00Z",
+    updatedAt: "2024-04-14T10:30:00Z",
+  },
+  {
+    _id: "5",
+    title: "Post 5",
+    content: "Contenido del Post 5...",
+    user: {
+      _id: "user5",
+      username: "usuario5",
+      image: "https://ejemplo.com/usuario5.jpg",
+      badge: "La ESTRELLA",
+      email: "La ESTRELLA",
+    },
+    likes: 8,
+    createdAt: "2024-04-13T16:00:00Z",
+    updatedAt: "2024-04-13T16:30:00Z",
+  },
+  {
+    _id: "6",
+    title: "Post 6",
+    content: "Contenido del Post 6...",
+    user: {
+      _id: "user6",
+      username: "usuario6",
+      image: "https://ejemplo.com/usuario6.jpg",
+      badge: "El ARTISTA",
+      email: "El ARTISTA",
+    },
+    likes: 12,
+    createdAt: "2024-04-12T11:00:00Z",
+    updatedAt: "2024-04-12T11:30:00Z",
+  },
+  {
+    _id: "7",
+    title: "Post 7",
+    content: "Contenido del Post 7...",
+    user: {
+      _id: "user7",
+      username: "usuario7",
+      image: "https://ejemplo.com/usuario7.jpg",
+      badge: "La VISIONARIA",
+      email: "La VISIONARIA",
+    },
+    likes: 25,
+    createdAt: "2024-04-11T13:00:00Z",
+    updatedAt: "2024-04-11T13:30:00Z",
+  },
+  {
+    _id: "8",
+    title: "Post 8",
+    content: "Contenido del Post 8...",
+    user: {
+      _id: "user8",
+      username: "usuario8",
+      image: "https://ejemplo.com/usuario8.jpg",
+      badge: "El PROFE",
+      email: "El PROFE",
+    },
+    likes: 18,
+    createdAt: "2024-04-10T15:00:00Z",
+    updatedAt: "2024-04-10T15:30:00Z",
+  },
+  {
+    _id: "9",
+    title: "Post 9",
+    content: "Contenido del Post 9...",
+    user: {
+      _id: "user9",
+      username: "usuario9",
+      image: "https://ejemplo.com/usuario9.jpg",
+      badge: "El EXPERTO",
+      email: "El EXPERTO",
+    },
+    likes: 14,
+    createdAt: "2024-04-09T17:00:00Z",
+    updatedAt: "2024-04-09T17:30:00Z",
+  },
+  {
+    _id: "10",
+    title: "Post 10",
+    content: "Contenido del Post 10...",
+    user: {
+      _id: "user10",
+      username: "usuario10",
+      image: "https://ejemplo.com/usuario10.jpg",
+      badge: "La GURÚ",
+      email: "La GURÚ",
+    },
+    likes: 30,
+    createdAt: "2024-04-08T08:00:00Z",
+    updatedAt: "2024-04-08T08:30:00Z",
+  },
+];
