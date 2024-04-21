@@ -26,7 +26,7 @@ const FeedView: React.FC<FeedViewProps> = ({  feedLoader }) => {
 
     // Llamar a loadFeed al montar el componente
     loadFeed();
-  }, []); // El segundo argumento [] asegura que este efecto solo se ejecute una vez al montar el componente
+  }, ); // El segundo argumento [] asegura que este efecto solo se ejecute una vez al montar el componente
 
 
   return (

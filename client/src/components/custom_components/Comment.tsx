@@ -8,7 +8,7 @@ interface CommentProps {
 
 const Comment: React.FC<CommentProps> = ({ comment }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { _id, user, content, postId, createdAt, updatedAt } = comment;
+  const { user, content, createdAt } = comment;
 
 
   const formatDate = (date: string) => new Date(date).toLocaleDateString();
