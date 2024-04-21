@@ -16,3 +16,12 @@ export interface IUser{
     image: string;
     badge: string;
 }
+
+export interface IComment{
+    _id: string;
+    content: string;
+    user: IUser;
+    postId: string;
+    createdAt: string;
+    updatedAt: string;
+}
