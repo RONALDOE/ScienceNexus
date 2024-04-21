@@ -1,7 +1,7 @@
 import React from "react";
 import { IPost } from "@utils/interfaces"; // Importa la interfaz IPost si es necesario
 import UserImage from "@components/custom_components/UserImage";
-
+import { Link } from "react-router-dom";
 interface PostProps {
   post: IPost; // Propiedad que representa un objeto de tipo IPost
 }
@@ -24,7 +24,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
       </div>
       <div className='flex flex-col items-center justify-center gap-4'>
         <div className='max-w-max border-b-black border-2 px-4 capitalize'>
+            <Link to={`/post/${post._id}`}>
           <h2 className=' font-bold text-2xl capitalize'>{title}</h2>
+                </Link>
         </div>
         <p className='text-justify'>{content}</p>
       </div>

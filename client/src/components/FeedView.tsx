@@ -30,7 +30,7 @@ const FeedView: React.FC<FeedViewProps> = ({  feedLoader }) => {
 
 
   return (
-    <div className='flex flex-col gap-8 mt-4 justify-center items-center'>
+    <div className='flex flex-col gap-8  justify-center items-center'>
     {loading ? (
       <p>Cargando...</p>
     ) : (
