@@ -33,7 +33,10 @@ const Post: React.FC<PostProps> = ({ post }) => {
   return (
     <div className="w-[80%] border-2 border-black rounded flex flex-col p-4">
       <div className="flex flex-row justify-center items-center gap-4 max-w-max">
+              <div className="w-12 h-12">
       <UserImage Initials={user.username} />
+        </div>
+
 
         <p>
           {user.username}
