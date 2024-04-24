@@ -1,22 +1,36 @@
-import Layout from "@components/Layout";
-import FeedView from "@components/FeedView";
-import { mockPosts } from "@utils/mock_Ipost";
-import { useState } from "react";
-import { IPost } from "@utils/interfaces";
+import {  useState } from 'react';
+import Layout from '@components/Layout';
+import FeedView from '@components/FeedView';
+import axios from 'axios';
+import { IPost } from '@utils/interfaces';
 
-export default function Index() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [posts, setPosts] = useState<IPost[]>([]); // Inicializa el estado de posts con un array vacío
+const Index = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [, setPosts] = useState<IPost[]>([]);
 
-  const feedLoader = () => {
-    // Simular la carga de posts utilizando los datos simulados
-    setPosts(mockPosts); // Establecer los posts simulados en el estado
-    return mockPosts; // Devolver los posts simulados
+  const feedLoader = async () => {
+    try {
+      const response = await axios.get<IPost[]>(`${import.meta.env.VITE_API}/posts/popular?userId=1`);
+      if (response.data) {
+        console.log('Posts cargados:', response.data)
+        setPosts(response.data);
+        return response.data;
+      } else {
+        console.error('La respuesta no contiene datos válidos:', response);
+        return [];
+      }
+    } catch (error) {
+      console.error('Error al cargar los posts:', error);
+      return [];
+    }
   };
+
 
   return (
     <Layout>
-      <FeedView  feedLoader={feedLoader} />
+      <FeedView feedLoader={feedLoader} />
     </Layout>
   );
-}
+};
+
+export default Index;

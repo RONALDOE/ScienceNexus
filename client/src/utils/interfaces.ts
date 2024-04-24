@@ -1,12 +1,14 @@
 export interface IPost{
-    _id: string;
+    id: string;
     title: string;
     content: string;
     image?: string;
-    user: IUser
+    user: IUserShort
     likes: number;
     createdAt: string;
     updatedAt: string;
+    liked: boolean;
+    saved: boolean; 
 }
 
 export interface IUser{
@@ -17,6 +19,12 @@ export interface IUser{
     badge: string;
 }
 
+
+export interface IUserShort{
+    _id: string;
+    username: string;
+    badge: string;
+}
 export interface IComment{
     _id: string;
     content: string;
