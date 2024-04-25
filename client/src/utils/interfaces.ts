@@ -19,6 +19,14 @@ export interface IUser{
     badge: string;
 }
 
+export interface IGreetings{
+    id:string;
+    title: string;
+    content: string;
+    userId: string;
+    createdAt: string;
+    updatedAt: string;
+}
 
 export interface IUserShort{
     _id: string;
@@ -32,4 +40,17 @@ export interface IComment{
     postId: string;
     createdAt: string;
     updatedAt: string;
+}
+
+
+export interface IProject{
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+    user: IUser;
+    createdAt: string;
+    updatedAt: string;
+    members: IUserShort[];
+    posts: IPost[];
 }

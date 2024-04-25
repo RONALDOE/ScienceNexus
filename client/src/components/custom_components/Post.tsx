@@ -95,19 +95,19 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <p>{updatedAt !== createdAt ? `Published at: ${formatDate(updatedAt)}` : `Published at: ${formatDate(createdAt)}`}</p>
       </div>  
       <div className='flex flex-row justify-around items-center gap-4 w-full mt-4'>
-        <IconButton onClick={handleLike}>
+        <IconButton onClick={handleLike} sx={{ position: "static"}} disableRipple>
           {isLiked ? (
-            <Favorite sx={{ fontSize: "2rem" }} />
+            <Favorite sx={{ fontSize: "2rem", zIndex: 10 }} />
           ) : (
             <FavoriteBorder sx={{ fontSize: "2rem" }} />
           )} {postLikes}
         </IconButton>
-        <Link to={`/post/:${id}/#comments`}>
-          <IconButton>
+        <Link to={`/post/${id}/#comments`} >
+          <IconButton sx={{ position: "static"}} disableRipple>
             <ChatBubbleOutline sx={{ fontSize: "2rem" }} />
           </IconButton>
         </Link>
-        <IconButton onClick={handleSave}>
+        <IconButton onClick={handleSave} sx={{ position: "static"} } disableRipple>
           {isSaved ? (
             <Bookmark sx={{ fontSize: "2rem" }} />
           ) : (

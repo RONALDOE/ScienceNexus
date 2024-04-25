@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { Backdrop } from '@mui/material';
 
 interface NewPostProps {
   open: boolean;
@@ -13,30 +11,20 @@ const NewPost: React.FC<NewPostProps> = ({ open, handleClose }) => {
   const [image, setImage] = useState('');
 
   const handleCreatePost = () => {
-    // Verificar que ningún campo esté vacío
-    if (!title || !content || !image) {
-      alert('Por favor completa todos los campos.');
-      return;
-    }
-
     // Aquí puedes implementar la lógica para enviar los datos del nuevo post al servidor
     console.log('Enviando datos del nuevo post:', { title, content, image });
-    sendPost(title, content, image, '1');
 
     // Cierra el modal después de enviar el formulario
     handleClose();
   };
 
   return (
-    <Backdrop
-      sx={{
-        zIndex: (theme) => theme.zIndex.drawer + 1,
-        color: '#fff',
-      }}
-      open={open}
-      onClick={handleClose}
+    <div
+      className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50  flex items-center justify-center ${
+        open ? 'block' : 'hidden'
+      }`}
     >
-      <div className="bg-white p-4 rounded-lg shadow-md w-96">
+      <div className="bg-white p-4 rounded-lg shadow-md w-96 z-[2147483647]">
         <h2 className="text-xl font-bold mb-4">Nuevo Post</h2>
         <input
           type="text"
@@ -61,33 +49,19 @@ const NewPost: React.FC<NewPostProps> = ({ open, handleClose }) => {
         />
         <button
           onClick={handleCreatePost}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Crear Post
         </button>
         <button
           onClick={handleClose}
-          className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+          className="bg-gray-300 text-gray-700 ml-2 px-4 py-2 rounded hover:bg-gray-400"
         >
           Cancelar
         </button>
       </div>
-    </Backdrop>
+    </div>
   );
 };
 
 export default NewPost;
-
-const sendPost = async (title: string, content: string, image: string, userId: string) => {
-  try {
-    const response = await axios.post(`${import.meta.env.VITE_API}/post`, {
-      title,
-      content,
-      image,
-      userId,
-    });
-    console.log('Post creado:', response.data);
-  } catch (error) {
-    console.error('Error al crear el post:', error);
-  }
-};

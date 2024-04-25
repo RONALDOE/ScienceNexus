@@ -29,12 +29,14 @@ const UserImage: React.FC<UserImageProps> = (props) => {
     const initials = getInitials(props.Initials);
 
     return (
-        <div className="rounded-full w-24 h-24 flex items-center justify-center bg-gray-300">
+        <div className="w-44 h-44 bg-black flex items-center justify-center  clip-custom  ">
+        <div className=" w-40 h-40 flex items-center justify-center bg-gray-300 clip-custom ">
             {props.Image != null ? (
-                <img src={props.Image} alt="User" className="rounded-full w-full h-full object-cover" />
+                <img src={props.Image} alt="User" className="rounded-full w-full h-full object-cover " />
             ) : (
                 <span className="text-white text-xl">{initials}</span>
             )}
+        </div>
         </div>
     );
 };
