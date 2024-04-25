@@ -1,10 +1,20 @@
 import Logo from "@assets/ScienceNexus_Logo.svg";
+import { useState } from "react";
 import { Search, Forum, AddCircle } from "@mui/icons-material";
 import { InputAdornment, FormControl, Input, IconButton } from "@mui/material";
 import { Notifications } from "@mui/icons-material";
 import UserImage from "@components/custom_components/UserImage";
-
+import NewPost from "./NewPost";
 export default function Topbar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <header className='w-full h-14 flex justify-around items-center fixed top-0 bg-white shandow-md'>
       <div className='flex justify-between items-center justify-self-start '>
@@ -28,7 +38,7 @@ export default function Topbar() {
           <IconButton aria-label='messages' color='primary'>
             <Forum sx={{ fontSize: 30 }} />
           </IconButton>
-          <IconButton aria-label='messages' color='primary'>
+          <IconButton aria-label='messages' color='primary' onClick={handleOpenModal}>
             <AddCircle sx={{ fontSize: 30 }} />
           </IconButton>
           <IconButton aria-label='messages' color='primary'>
@@ -36,6 +46,8 @@ export default function Topbar() {
           </IconButton>
         </div>
         <UserImage Initials='Ronaldo Suero' />
+        <NewPost open={isModalOpen} handleClose={handleCloseModal} />
+
       </div>
     </header>
   );

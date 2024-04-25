@@ -16,7 +16,7 @@ export default function PostView() {
 
   useEffect(() => {
     const fetchPost = async (id: string) => {
-      await Axios.get<IPostFetch>(`${import.meta.env.VITE_API}/posts/${id}`)
+      await Axios.get<IPostFetch>(`${import.meta.env.VITE_API}/post/${id}`)
         .then((response) => {
             setPost(response.data.post);
             setComments(response.data.comments);

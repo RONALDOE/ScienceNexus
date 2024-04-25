@@ -12,3 +12,6 @@ padding: 0%;
   background-repeat: no-repeat;
   background-size: cover;
 }
+.MuiDrawer-root{
+  z-index:1300;
+}
