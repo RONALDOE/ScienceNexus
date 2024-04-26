@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 
 interface NewPostProps {
   open: boolean;
@@ -13,6 +14,18 @@ const NewPost: React.FC<NewPostProps> = ({ open, handleClose }) => {
   const handleCreatePost = () => {
     // Aquí puedes implementar la lógica para enviar los datos del nuevo post al servidor
     console.log('Enviando datos del nuevo post:', { title, content, image });
+
+    axios.post(`${import.meta.env.VITE_API}/post/1`, {
+      title,
+      content,
+      image,
+    })
+      .then((response) => {
+        console.log('Respuesta del servidor:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error al enviar el post:', error);
+      });
 
     // Cierra el modal después de enviar el formulario
     handleClose();

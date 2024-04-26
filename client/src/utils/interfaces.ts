@@ -12,7 +12,7 @@ export interface IPost{
 }
 
 export interface IUser{
-    _id: string;
+    id: string;
     username: string;
     email: string;
     image: string;
@@ -29,7 +29,7 @@ export interface IGreetings{
 }
 
 export interface IUserShort{
-    _id: string;
+    id: string;
     username: string;
     badge: string;
 }

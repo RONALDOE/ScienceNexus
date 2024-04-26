@@ -17,7 +17,6 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const { id, title, content, user, createdAt, updatedAt, saved, liked, likes } =post;
-  console.log(post);
   const [isLiked, setIsLiked] = useState(saved);
   const [isSaved, setIsSaved] = useState(liked);
   const [postLikes, setPostLikes] = useState(likes);
@@ -28,9 +27,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
     try {
       if (isLiked) {
         // Si ya le dio like, eliminar el like
-        await axios.delete(
-          `${import.meta.env.VITE_API}/posts/${id}/like/?userId=1`
-        );
+        await axios.post(`${import.meta.env.VITE_API}/posts/${id}/like/`, {
+          userId: 1,
+        });
         setPostLikes((prev) => prev - 1);
       } else {
         // Si no le ha dado like, agregar el like
@@ -52,9 +51,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
     try {
       if (isSaved) {
         // Si ya está guardado, eliminar el post guardado
-        await axios.delete(
-          `${import.meta.env.VITE_API}/posts/${id}/save/?userId=1`
-        );
+        await axios.post(`${import.meta.env.VITE_API}/posts/${id}/save/`, {
+          userId: 1,
+        });
       } else {
         // Si no está guardado, guardar el post
         await axios.post(`${import.meta.env.VITE_API}/posts/${id}/save/`, {
@@ -71,6 +70,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
   return (
     <div className='w-[80%] border-2 border-black rounded flex flex-col p-4'>
+          <Link to={`/user/${user.id}`}>
       <div className='flex flex-row justify-center items-center gap-4 max-w-max'>
         <div className='w-12 h-12'>
           <UserImage Initials={user.username} />
@@ -82,6 +82,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
           {user.badge}
         </p>
       </div>
+        </Link>
       <div className='flex flex-col items-center justify-center gap-4'>
         <div className='max-w-max border-b-black border-2 px-4 capitalize'>
           <Link to={`/post/${id}`}>
@@ -95,19 +96,19 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <p>{updatedAt !== createdAt ? `Published at: ${formatDate(updatedAt)}` : `Published at: ${formatDate(createdAt)}`}</p>
       </div>  
       <div className='flex flex-row justify-around items-center gap-4 w-full mt-4'>
-        <IconButton onClick={handleLike} sx={{ position: "static"}} disableRipple>
+        <IconButton onClick={handleLike} sx={{position:"static"}} disableRipple>
           {isLiked ? (
-            <Favorite sx={{ fontSize: "2rem", zIndex: 10 }} />
+            <Favorite sx={{ fontSize: "2rem" }} />
           ) : (
             <FavoriteBorder sx={{ fontSize: "2rem" }} />
           )} {postLikes}
         </IconButton>
-        <Link to={`/post/${id}/#comments`} >
-          <IconButton sx={{ position: "static"}} disableRipple>
+        <Link to={`/post/${id}/#comments`}>
+          <IconButton sx={{position:"static"}} disableRipple>
             <ChatBubbleOutline sx={{ fontSize: "2rem" }} />
           </IconButton>
         </Link>
-        <IconButton onClick={handleSave} sx={{ position: "static"} } disableRipple>
+        <IconButton onClick={handleSave} sx={{position:"static"}} disableRipple>
           {isSaved ? (
             <Bookmark sx={{ fontSize: "2rem" }} />
           ) : (

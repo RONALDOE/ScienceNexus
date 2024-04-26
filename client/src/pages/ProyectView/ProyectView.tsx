@@ -4,20 +4,20 @@ import axios from "axios";
 import ProyectLayout from "@components/ProyectLayout";
 import UserImage from "@components/custom_components/UserImageView";
 import FeedView from "@components/FeedView";
-import { IPost, IUser, IProject, IGreetings  } from "@utils/interfaces";
+import { IPost, IUser, IProject  } from "@utils/interfaces";
 import Greeting from '@components/custom_components/Greeting';
 
 export default function UserView() {
   const { type, id } = useParams<{ type: "user" | "project", id: string }>();
   const [, setPosts] = useState<IPost[]>([]);
   const [data, setData] = useState<IUser | IProject>();
-  const [greetings, setGrettings] = useState<IGreetings>();
 
   useEffect(() => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get<IUser | IProject>(`${import.meta.env.VITE_API}/${type}/${id}`);
+        const response = await axios.get<IUser | IProject>(`${import.meta.env.VITE_API}/${type}/${id}`)
+        .then()
         if (response.data) {
           console.log('Data cargada:', response.data)
           setData(response.data);
@@ -28,30 +28,16 @@ export default function UserView() {
         console.error('Error al cargar los datos:', error);
       }
     }
-    const fetchGreetings = async () => {
-      try {
-        const response = await axios.get<IGreetings>(`${import.meta.env.VITE_API}/greetings/${id}`);
-        if (response.data) {
-          console.log('Greetings cargados:', response.data)
-          setGrettings(response.data);
-        } else {
-          console.error('La respuesta no contiene datos válidos:', response);
-        }
-      } catch (error) {
-        console.error('Error al cargar los greetings:', error);
-      }
-    };
+    
 fetchData();
-fetchGreetings();
 
-console.log(greetings)
   }, []);
 
  
 
   const feedLoader = async () => {
     try {
-      const response = await axios.get<IPost[]>(`${import.meta.env.VITE_API}/post/${type}/${id}/posts`);
+      const response = await axios.get<IPost[]>(`${import.meta.env.VITE_API}/post/${type}/${id}/posts/?userId=1`);
       if (response.data) {
         console.log('Posts cargados:', response.data)
         setPosts(response.data);
@@ -67,7 +53,8 @@ console.log(greetings)
   };
 
   return (
-    <ProyectLayout imgUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2006-06-22_12-37-59_Seychelles_-_Machabee_%28Sainte_Anne_Island%29.jpg/1200px-2006-06-22_12-37-59_Seychelles_-_Machabee_%28Sainte_Anne_Island%29.jpg">
+    <ProyectLayout imgUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2006-06-22_12-37-59_Seychelles_-_Machabee_%28Sainte_Anne_Island%29.jpg/1200px-2006-06-22_12-37-59_Seychelles_-_Machabee_%28Sainte_Anne_Island%29.jpg" 
+    id={data!.id} type={type!}>
       <div className="w-full flex flex-col z-50 justify-center items-center  -translate-y-40">
         {type === "user" && (
           <UserImage
@@ -77,8 +64,8 @@ console.log(greetings)
         )}
         </div>      
         
-        <div className={`w-full -mt-36 `}>
-           <Greeting props={greetings!}/>
+        <div className={`w-full ${type === "user" ? '-mt-36' : ''} flex flex-col gap-4`}>
+           <Greeting id={id!} type={type!}/>
           <FeedView feedLoader={feedLoader} />
         </div>
     </ProyectLayout>

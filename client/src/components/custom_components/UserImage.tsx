@@ -1,5 +1,4 @@
 import React from 'react';
-
 interface UserImageProps {
     Image?: string | null;
     Initials: string;
@@ -29,6 +28,7 @@ const UserImage: React.FC<UserImageProps> = (props) => {
     const initials = getInitials(props.Initials);
 
     return (
+
         <div className="rounded-full w-12 h-12 flex items-center justify-center bg-gray-300">
             {props.Image != null ? (
                 <img src={props.Image} alt="User" className="rounded-full w-full h-full object-cover" />
@@ -36,6 +36,7 @@ const UserImage: React.FC<UserImageProps> = (props) => {
                 <span className="text-white text-xl">{initials}</span>
             )}
         </div>
+    
     );
 };
 
