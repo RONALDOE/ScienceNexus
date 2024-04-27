@@ -22,6 +22,7 @@ const NewPost: React.FC<NewPostProps> = ({ open, handleClose }) => {
     })
       .then((response) => {
         console.log('Respuesta del servidor:', response.data);
+clearFields() 
       })
       .catch((error) => {
         console.error('Error al enviar el post:', error);
@@ -30,6 +31,13 @@ const NewPost: React.FC<NewPostProps> = ({ open, handleClose }) => {
     // Cierra el modal después de enviar el formulario
     handleClose();
   };
+
+  const clearFields = ()=>{
+    setTitle("")
+    setContent("")
+    setImage("")
+
+  }
 
   return (
     <div

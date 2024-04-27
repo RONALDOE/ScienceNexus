@@ -45,12 +45,24 @@ export interface IComment{
 
 export interface IProject{
     id: string;
-    title: string;
+    name: string;
     description: string;
-    image: string;
+    category: ICategory;
     user: IUser;
+    backgroundUrl: string;
+    image: string;
     createdAt: string;
     updatedAt: string;
-    members: IUserShort[];
-    posts: IPost[];
+    membersQuantity: number;
+    members?: IUserShort[];
+    posts?: IPost[];
+    isUserMember: boolean;
+}
+
+export interface ICategory{
+    id: number;
+    name: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
 }

@@ -1,30 +1,31 @@
-import React from 'react'
-export default function Sidebar() {
-  return (
-    <div className='w-[20rem] p-4 rounded border-2 border-black flex flex-col justify-start items-center gap-2 fixed top-20'>
-      <div className='w-full  flex flex-col gap-8 items-center justify-center'>
+import {  Home,Contacts, AccountTree, Settings, Logout } from "@mui/icons-material";
 
-    <div className='w-[40%]  text-xl font-semibold'>
-        <p>Inicio</p>
+
+export default function Sidebar() {
+
+
+  return (
+    <div className=' '>
+      <div className='w-full  flex-col gap-4 items-left justify-center hidden max-w-[20rem] p-4 rounded border-2 border-black lg:flex  fixed top-20'>
+    <div className='max-w-max  text-xl font-semibold border-black border-2 rounded-md p-2 flex flex-row justify-center items-left'>
+        <Home/><p>Inicio</p>
     </div>
-    <div className='w-[40%]  text-xl font-semibold'>
-        <p>Mi Perfil</p>
+    <div className='max-w-max  text-xl font-semibold border-black border-2 rounded-md p-2 flex flex-row justify-center items-left'>
+        <Contacts/><p>Mi Perfil</p>
     </div>
-    <div className='w-[40%]  text-xl font-semibold'>
-        <p>Proyectos</p>
+    <div className='max-w-max  text-xl font-semibold border-black border-2 rounded-md p-2 flex flex-row justify-center items-left'>
+        <AccountTree/><p>Proyectos</p>
     </div>
-    <div className='w-[40%]  text-xl font-semibold'>
-        <p>Novedades</p>
-    </div>
-    <div className='w-[40%]  text-xl font-semibold'>
+    <div className='max-w-max  text-xl font-semibold border-black border-2 rounded-md p-2 flex flex-row justify-center items-left'>
+        <Settings/>
         <p>Configuraciones</p>
     </div>
-    <div className='w-[40%]  text-xl font-semibold'>
-        <p>Salir</p>
+    <div className='max-w-max  text-xl font-semibold border-black border-2 rounded-md p-2 flex flex-row justify-center items-left'>
+        <Logout/><p>Salir</p>
     </div>
-
-
         </div>
+
+      
     </div>
   )
 }
