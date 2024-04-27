@@ -13,7 +13,6 @@ const Post: React.FC<ProjectCardProps> = ({ project }) => {
     description,
     image,
     backgroundUrl,
-    user,
     category,
     isUserMember,
   } = project;

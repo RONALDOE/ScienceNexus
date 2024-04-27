@@ -9,28 +9,28 @@ interface FeedViewProps {
 
 const ProjectsFeedView: React.FC<FeedViewProps> = ({
   feedLoader,
-  categoriesLoader,
-  filtredLoader,
+  // categoriesLoader,
+  // filtredLoader,
 }) => {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [categories, setCategories] = useState<ICategory[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<
-    ICategory | undefined
-  >(undefined);
+  // const [categories, setCategories] = useState<ICategory[]>([]);
+  // const [selectedCategory, setSelectedCategory] = useState<
+  //   ICategory | undefined
+  // >(undefined);
   useEffect(() => {
     const loadFeed = async () => {
       try {
         setLoading(true);
-        const loadedCategories = await categoriesLoader();
-        setCategories(loadedCategories);
-        if (selectedCategory !== undefined) {
-          const loadedPosts = await filtredLoader(selectedCategory);
-          setProjects(loadedPosts);
-        } else {
+        // const loadedCategories = await categoriesLoader();
+        // setCategories(loadedCategories);
+        // if (selectedCategory !== undefined) {
+        //   const loadedPosts = await filtredLoader(selectedCategory);
+        //   setProjects(loadedPosts);
+        // } else {
           const loadedPosts = await feedLoader();
           setProjects(loadedPosts);
-        }
+        // }
         setLoading(false); // Establecer loading a false una vez que los datos se han cargado
       } catch (error) {
         console.error("Error al cargar el feed:", error);
@@ -39,21 +39,22 @@ const ProjectsFeedView: React.FC<FeedViewProps> = ({
     };
 
     loadFeed();
-  }, [selectedCategory]); // Dependencia feedLoader para ejecutar el efecto cada vez que feedLoader cambie
+  // }, [selectedCategory]); // Dependencia feedLoader para ejecutar el efecto cada vez que feedLoader cambie
+}, []); // Dependencia feedLoader para ejecutar el efecto cada vez que feedLoader cambie
 
-  const handleCategoryChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    console.log(event.target.value);
-    const categoryId = event.target.value;
-    const category = categories.find(
-      (category) => category.id.toString() === categoryId
-    );
-    setSelectedCategory(category);
-  };
-  if (categories.length === 0 || !projects) {
-    return null;
-  }
+  // const handleCategoryChange = (
+  //   event: React.ChangeEvent<HTMLSelectElement>
+  // ) => {
+  //   console.log(event.target.value);
+  //   const categoryId = event.target.value;
+  //   const category = categories.find(
+  //     (category) => category.id.toString() === categoryId
+  //   );
+  //   setSelectedCategory(category);
+  // };
+  // if (categories.length === 0 || !projects) {
+  //   return null;
+  // }
   
   return (
     <div className='flex flex-col gap-8 justify-center items-center'>
