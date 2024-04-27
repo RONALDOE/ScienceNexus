@@ -31,11 +31,7 @@ export default function PostView() {
       if (response.status === 201) {
         // Actualizar el estado de los comentarios para reflejar el nuevo comentario
         // Esto puede requerir una recarga de los comentarios, dependiendo de cómo esté implementada tu lógica
-        const comment= {
-          content: newComment,
-          userId: "1",
-          postId: postId
-        }
+       
         console.log("Comentario agregado correctamente");
         location.reload();
       }
